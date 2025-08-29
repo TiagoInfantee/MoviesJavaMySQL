@@ -6,23 +6,24 @@ import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import Models.Movie;
+import com.tiagomovies.movies.Models.Movie;
+import com.tiagomovies.movies.Repository.MovieRepository;
 
 
 @RestController
 public class MoviesController {
 
+    private final MovieRepository movieRepository;
+
+    public MoviesController(MovieRepository movieRepository){
+        this.movieRepository = movieRepository;
+    }
+
     @GetMapping("/getallmovies")
     public List<Movie> getAllMovies(){
-
-        List<Movie> movies = new ArrayList<>();
-
-        Movie conjuring = new Movie( 1,"Conjuring", "Terror", 2018);
-
-        movies.add(conjuring);
-
+        List<Movie> movies = movieRepository.findAll();
         return movies;
-
     }
+
 
 }

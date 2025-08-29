@@ -1,11 +1,23 @@
-package Models;
+package com.tiagomovies.movies.Models;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
+@Entity
 public class Movie {
-    private int id;
+
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Integer id;
     private String title;
     private String category;
     private int year;
+
+    public Movie(){
+
+    }
 
 
     public Movie(
